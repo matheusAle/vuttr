@@ -3,11 +3,11 @@ import {Container, Content} from "./styles";
 
 
 
-export default ({ children }) => {
+export default ({ children, onClick }) => {
 
     return (
-        <Container>
-            <Content>
+        <Container onClick={onClick}>
+            <Content onClick={e => e.stopPropagation()}>
                 {children}
             </Content>
         </Container>

@@ -55,7 +55,7 @@ export default ({ close, addItem }) => {
                 tags: tags
                     .split(/((?:\w+)|(?:'.+'))/gm)
                     .filter(tag => !isEmptyString(tag))
-                    .map(tag => tag.replace('\'', ''))
+                    .map(tag => tag.replace(/'/gm, ''))
             });
             addItem && addItem(result);
             close()
@@ -67,7 +67,7 @@ export default ({ close, addItem }) => {
 
     return (
         <Modal onClick={close}>
-            <Form onClick={e => e.stopPropagation()} onSubmit={save}>
+            <Form onSubmit={save}>
 
                 {validationMessages && validationMessages.length > 0 && (
                     <Warning>
